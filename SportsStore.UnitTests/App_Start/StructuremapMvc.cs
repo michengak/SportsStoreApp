@@ -28,14 +28,13 @@ namespace SportsStore.UnitTests.App_Start
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using SportsStore.UnitTests.DependencyResolution;
-
+    using System.Web.Mvc;
     using StructureMap;
 
     public static class StructuremapMvc {
         #region Public Properties
 
         public static StructureMapDependencyScope StructureMapDependencyScope { get; set; }
-        public static object DependencyResolver { get; private set; }
 
         #endregion
 

@@ -23,6 +23,7 @@ namespace SportsStore.UnitTests.DependencyResolution {
 
     using Microsoft.Practices.ServiceLocation;
     using Moq;
+    using SportsStore.Domain.Abstract;
     using SportsStore.Domain.Entities;
     using StructureMap;
 	
@@ -50,7 +51,7 @@ namespace SportsStore.UnitTests.DependencyResolution {
         #endregion
         private void AddBindings( IContainer container)
         {
-            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
             mock.Setup(m => m.Products).Returns(new List<Product>
             {
                 new Product { Name = " Football", Price = 25 },
@@ -58,7 +59,7 @@ namespace SportsStore.UnitTests.DependencyResolution {
                 new Product { Name = " Running shoes", Price = 95 }
 
             });
-            container.Inject<IProductRepository>(mock.Object);
+            container.Inject<IProductsRepository>(mock.Object);
         }
 
         #region Public Properties
@@ -133,13 +134,5 @@ namespace SportsStore.UnitTests.DependencyResolution {
         }
 
         #endregion
-    }
-}
-
-namespace SportsStore.UnitTests.DependencyResolution
-{
-    class IProductRepository
-    {
-        internal object Products;
     }
 }

@@ -8,8 +8,8 @@ using SportsStore.Domain.Entities;
 
 namespace SportsStore.Domain.Abstract
 {
-    interface IProductsRepository
+    public interface IProductsRepository
     {
-        IEnumerable<Product> Products { get; set; }
+        IEnumerable<Product> Products { get;  }
     }
 }
