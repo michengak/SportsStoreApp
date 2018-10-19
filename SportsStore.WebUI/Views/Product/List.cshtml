@@ -6,13 +6,16 @@
 
 @foreach (var p in Model.Products)
 {
+
     <div class="well">
         <h3>
             <strong>@p.Name</strong>
-            <span class="pull-right label label-primary">@p.Price.ToString("c")</span>
+            <span class="pull-right label-primary">@p.Price.ToString("c")
+            </span>
         </h3>
         <span class="lead"> @p.Description</span>
     </div>
+
 }
 
 <div class="btn-group pull-right">
