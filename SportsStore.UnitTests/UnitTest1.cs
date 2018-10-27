@@ -168,8 +168,9 @@ namespace SportsStore.UnitTests
             string categoryToSelect = "Apples";
 
             // Action
-            string result = target.Menu(categoryToSelect).ViewBag.SelectedCategory;
 
+
+            string result = null;
             // Assert
             Assert.AreEqual(categoryToSelect, result);
         }
