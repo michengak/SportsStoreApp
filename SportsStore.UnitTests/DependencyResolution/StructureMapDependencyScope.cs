@@ -18,12 +18,14 @@
 namespace SportsStore.UnitTests.DependencyResolution {
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Linq;
     using System.Web;
 
     using Microsoft.Practices.ServiceLocation;
     using Moq;
     using SportsStore.Domain.Abstract;
+    using SportsStore.Domain.Concrete;
     using SportsStore.Domain.Entities;
     using StructureMap;
 	
@@ -51,15 +53,11 @@ namespace SportsStore.UnitTests.DependencyResolution {
         #endregion
         private void AddBindings( IContainer container)
         {
-            Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
-            mock.Setup(m => m.Products).Returns(new List<Product>
+            EmailSettings emailSetting = new EmailSettings
             {
-                new Product { Name = " Football", Price = 25 },
-                new Product { Name = " Surf board", Price = 179 },
-                new Product { Name = " Running shoes", Price = 95 }
-
-            });
-            container.Inject<IProductsRepository>(mock.Object);
+                WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+            container.Inject<EmailSettings>(emailSetting);
         }
 
         #region Public Properties
