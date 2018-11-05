@@ -7,6 +7,7 @@ using SportsStore.Domain.Abstract;
 
 namespace SportsStore.WebUI.Controllers
 {
+
     public class NavController : Controller
     {
         private IProductsRepository repository;
@@ -16,16 +17,19 @@ namespace SportsStore.WebUI.Controllers
             repository = repo;
         }
 
-        //public PartialViewResult Menu(string category = null) => ViewBag.SelectedCategory = category;
-
-        // GET: Nav
-        public PartialViewResult Menu()
+        public PartialViewResult Menu(string category = null,
+            bool horizontalLayout = false)
         {
+
+            ViewBag.SelectedCategory = category;
+
             IEnumerable<string> categories = repository.Products
-                                       .Select(x => x.Category)
-                                       .Distinct()
-                                       .OrderBy(x => x);
-            return PartialView(categories);
+                                    .Select(x => x.Category)
+                                    .Distinct()
+                                    .OrderBy(x => x);
+
+            string viewName = horizontalLayout ? "MenuHorizontal" : "Menu";
+            return PartialView(viewName, categories);
         }
     }
 }

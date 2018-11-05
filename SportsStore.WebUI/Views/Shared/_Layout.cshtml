@@ -21,17 +21,18 @@
             <div class="visible-xs">SPORTS</div>
             <div class="visible-xs">STORE</div>
         </a>
-       
-        @Html.Action("Summary","Cart")
+
+        @Html.Action("Summary", "Cart")
     </div>
+    <div class="visible-xs">
+        @Html.Action("Menu", "Nav", new { horizontalLayout = true })
+    </div>
+
     <div class="row panel">
         <div class="col-sm-3 hidden-xs">
             @Html.Action("Menu", "Nav")
-        </div>
-        <div id="categories" class="col-xs-3">
-           
-           
-        </div>
+    </div>
+
         <div class="col-xs-12 col-xs-8">
             @RenderBody()
         </div>
