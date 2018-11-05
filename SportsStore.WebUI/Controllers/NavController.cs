@@ -27,9 +27,9 @@ namespace SportsStore.WebUI.Controllers
                                     .Select(x => x.Category)
                                     .Distinct()
                                     .OrderBy(x => x);
+            return PartialView("FlexMenu", categories);
 
-            string viewName = horizontalLayout ? "MenuHorizontal" : "Menu";
-            return PartialView(viewName, categories);
+           
         }
     }
 }
